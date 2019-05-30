@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ZVue测试页面</title>
+  <!-- <script src="./zvue.js"></script> -->
+</head>
+<body>
+  <!-- <script>
+      const app = new ZVue({
+        data:{
+          test:'I am Iron Man',
+          foo:{
+            bar:'bar'
+          }
+        }
+      })
+      app.$data.test = 'Hello World!'
+      app.$data.foo.bar = 'oh my god!'
+  </script> -->
+  <div id="app">
+    <p>{{name}}</p>
+    <p z-text="name"></p>
+    <p>{{age}}</p>
+    <p>{{doubleAge}}</p>
+    <input type="text" z-model="name">
+    <button @click="changeName">点击</button>
+    <div z-html="html"></div>
+  </div>
+  <script src="./compiles.js"></script>
+  <script src="./zvue.js"></script>
+  <script>
+    const zz = new ZVue({
+      el:'#app',
+      data:{
+        name:'I am test.',
+        age:12,
+        html:'<button>这是一个按钮</button>'
+      },
+      created(){
+        console.log('开始了')
+        setTimeout(() => {
+          this.name = '我是测试'
+        }, 1500);
+      },
+      methods:{
+        changeName(){
+          this.name = 'Hello Vue!',
+          this.age = 1
+        }
+      }
+    })
+  </script>
+</body>
+</html>
